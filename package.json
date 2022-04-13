@@ -1,0 +1,37 @@
+{
+  "name": "digital_binder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd reactjs && npm start",
+    "db-update": "sequelize db:migrate:undo:all && sequelize db:migrate",
+    "db-seed": "sequelize db:seed:undo:all && sequelize db:seed:all",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "start": "node server.js",
+    "heroku-postbuild": "npm run db-update && npm run db-seed && cd reactjs && npm install && npm install --only=dev --no-shrinkwrap && npm run build reactjs && npm run client"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.17.0",
+    "sequelize-cli": "^6.4.1",
+    "session-file-store": "^1.5.0"
+  },
+  "devDependencies": {
+    "debug": "^4.3.4"
+  }
+}
